@@ -1,0 +1,4 @@
+geo/lcd*
+geo/*.zip
+.venv/
+.DS_Store

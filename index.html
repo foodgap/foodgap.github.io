@@ -741,7 +741,7 @@ window.addEventListener("DOMContentLoaded",function(){
 
   map.on("load",function(){
     map.addSource("divisions",{type:"geojson",data:CAN,promoteId:"code"});
-    map.addLayer({id:"division-fill",type:"fill",source:"divisions",paint:{"fill-color":colorExpr,
+    map.addLayer({id:"division-fill",type:"fill",source:"divisions",paint:{"fill-antialias":false,"fill-color":colorExpr,
       "fill-opacity":["case",["boolean",["feature-state","selected"],false],0.95,["boolean",["feature-state","hover"],false],0.9,0.68]}});
     map.addLayer({id:"division-line",type:"line",source:"divisions",paint:{
       "line-color":["case",["boolean",["feature-state","selected"],false],"#ffffff",["boolean",["feature-state","hover"],false],"#f0562e","rgba(150,160,170,0.35)"],

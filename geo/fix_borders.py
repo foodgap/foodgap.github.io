@@ -25,6 +25,8 @@ tr = Transformer.from_crs("EPSG:3347", "EPSG:4326", always_xy=True)
 def rp(g): return shp_transform(lambda x, y: tr.transform(x, y), g)
 geoms = [rp(g) for g in geoms]
 
+
+
 from shapely.geometry import Polygon, MultiPolygon
 def prune(g, min_part=8e-4, min_hole=8e-4):
     """Drop speck islands / lake-holes (< ~6 km²). Shared land borders untouched;
@@ -39,20 +41,27 @@ def prune(g, min_part=8e-4, min_hole=8e-4):
     return keep[0] if len(keep) == 1 else MultiPolygon(keep)
 def rnd(o):  # round every coordinate to 4 decimals (~11 m; shared vertices round identically)
     if isinstance(o, (list, tuple)): return [rnd(x) for x in o]
-    return round(o, 4)
+    return round(o, 6)
 def gjson(g):
     m = mapping(g); return {"type": m["type"], "coordinates": rnd(m["coordinates"])}
+def shape_from(g): return shape(g)
 print("③ topology-preserving simplify (tuning tolerance)…", flush=True)
 best = None
+def hard_valid(gl):
+    """strict coverage validity AND a clean union (catches self-intersections)."""
+    if not bool(shapely.coverage_is_valid(np.array(gl, dtype=object))): return False
+    try: shapely.unary_union(gl); return True
+    except Exception: return False
 for tol in (0.010, 0.020, 0.040):
     simp = shapely.coverage_simplify(np.array(geoms, dtype=object), tol)
     simp = [prune(g) for g in simp]
-    gj = [gjson(g) for g in simp]
+    gj = [gjson(g) for g in simp]  # 6-dec (~0.1 m) rounding: far below tolerance, verified strictly below
+    back = [shape_from(g) for g in gj]
+    valid = hard_valid(back)
     size = sum(len(json.dumps(g, separators=(",", ":"))) for g in gj)
     verts = sum(shapely.get_num_coordinates(g) for g in simp)
-    valid = bool(shapely.coverage_is_valid(np.array(simp, dtype=object)))
-    print(f"   tol={tol}: {verts:,} vertices | geometry JSON {size/1e6:.2f} MB | coverage valid: {valid}", flush=True)
-    if valid and size <= 2_000_000: best = (tol, gj); break
+    print(f"   tol={tol}: {verts:,} vertices | {size/1e6:.2f} MB | strict-valid after rounding: {valid}", flush=True)
+    if valid and size <= 2_400_000: best = (tol, gj); break
     if valid: best = (tol, gj)
 if not best: sys.exit("no valid simplification found")
 tol, gj = best
