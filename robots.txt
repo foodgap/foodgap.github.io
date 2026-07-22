@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thefoodgap.ca/sitemap.xml
+Sitemap: https://thefoodgap.github.io/sitemap.xml
