@@ -245,7 +245,8 @@
     .maplibregl-ctrl-group{display:none}
     .basemap-notice{left:12px;right:12px;width:auto;bottom:calc(150px + env(safe-area-inset-bottom))}
     .filter-toast{left:12px;right:12px;top:auto;width:auto;max-width:none;bottom:calc(150px + env(safe-area-inset-bottom))}
-    .panel{overscroll-behavior:contain}
+    .panel{overscroll-behavior:contain;visibility:hidden;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s .35s}
+    .panel.open{visibility:visible;transition:transform .32s cubic-bezier(.4,0,.2,1)}
     .panel::before{content:"";display:block;position:sticky;top:6px;z-index:11;width:44px;height:4px;margin:0 auto 2px;border-radius:3px;background:rgba(255,255,255,.28)}
     .panel{width:100%;top:auto;bottom:0;height:62%;border-left:0;border-top:1px solid var(--line);transform:translateY(100%);border-radius:18px 18px 0 0;z-index:12;
       padding-bottom:env(safe-area-inset-bottom)}
@@ -777,7 +778,9 @@ window.addEventListener("DOMContentLoaded",function(){
       "line-width":["case",["boolean",["feature-state","selected"],false],3,["boolean",["feature-state","hover"],false],2,0.6]}});
     var ph=null;
     map.on("mousemove","division-fill",function(e){var f=e.features[0]; if(!f) return; map.getCanvas().style.cursor="pointer";
+      if(MOB())return;
       if(ph!==f.id){ if(ph!==null) map.setFeatureState({source:"divisions",id:ph},{hover:false}); ph=f.id; map.setFeatureState({source:"divisions",id:ph},{hover:true}); }});
+    window.__clearHover=function(){ if(ph!==null){ try{map.setFeatureState({source:"divisions",id:ph},{hover:false});}catch(e){} ph=null; } };
     map.on("mouseleave","division-fill",function(){map.getCanvas().style.cursor=""; if(ph!==null){map.setFeatureState({source:"divisions",id:ph},{hover:false}); ph=null;}});
     map.on("click","division-fill",function(e){ if(e.features[0]) selectDivision(e.features[0].properties,e.features[0].geometry); });
     fit(); applyFilter();
@@ -849,7 +852,7 @@ window.addEventListener("DOMContentLoaded",function(){
   function openByCode(code){
     for(var i=0;i<CAN.features.length;i++){ if(CAN.features[i].properties.code===code){ selectDivision(CAN.features[i].properties,CAN.features[i].geometry); return; } }
   }
-  function closePanel(){ panel.style.transition=""; panel.style.transform=""; var wasOpen=panel.classList.contains("open"); panel.classList.remove("open"); document.body.classList.remove("panel-open"); curKey=null; clearSelected();
+  function closePanel(){ panel.style.transition=""; panel.style.transform=""; if(MOB()&&window.__clearHover) window.__clearHover(); var wasOpen=panel.classList.contains("open"); panel.classList.remove("open"); document.body.classList.remove("panel-open"); curKey=null; clearSelected();
     currentSelection=null;
     try{ history.replaceState(null,"",langUrl(null)); }catch(e){}
     if(wasOpen) fitSafe(HOME,{padding:MOB()?{top:130,bottom:24,left:12,right:12}:{top:120,bottom:44,left:44,right:40},duration:dur(700)}); }
