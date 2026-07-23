@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>The Food Gap — Food-Insecurity Risk Across Canada</title>
 <meta name="description" content="An interactive map of all 293 Canadian census divisions, shaded by low-income prevalence (2021 Census income year 2020, LIM-AT) — a leading risk factor for household food insecurity." />
 <meta name="robots" content="index,follow" />
@@ -64,6 +64,7 @@
   .lang-toggle{min-width:86px}
   .mobile-tools{display:none;position:absolute;z-index:7;left:20px;right:20px;top:118px;gap:8px}
   .mobile-tools .btn-ghost{flex:1;background:rgba(18,24,31,.92);backdrop-filter:blur(8px);box-shadow:var(--shadow)}
+  .filters .sheet-close{display:none}
   .search{position:absolute;z-index:8;top:64px;right:20px;width:300px;max-width:calc(100vw - 40px)}
   .search input{width:100%;padding:11px 14px;border-radius:11px;border:1px solid var(--line);
     min-height:44px;background:rgba(18,24,31,.92);color:var(--text);font-size:14px;backdrop-filter:blur(8px);box-shadow:var(--shadow)}
@@ -213,26 +214,40 @@
   @media (max-width:1040px){ .tagline{display:none} }
   @media (max-width:860px){ header .hstat{display:none} }
   @media (max-width:720px){
-    header{gap:8px;padding:12px}
-    .wordmark{font-size:20px}
+    header{gap:8px;padding:10px 12px}
+    .wordmark{font-size:19px}
     header .brand{flex:1;min-width:0}
     header .spacer{display:none}
     header > #method-btn,header > #about-btn,header > #table-btn{display:none}
-    .btn-ghost{min-height:44px;padding:9px 11px}
-    .panel{width:100%;top:auto;bottom:0;height:76%;border-left:0;border-top:1px solid var(--line);transform:translateY(100%);border-radius:18px 18px 0 0}
-    .panel.open{transform:translateY(0)}
-    .mobile-tools{display:grid;grid-template-columns:1fr 1fr;top:130px}
-    .filters{display:none;top:236px;left:20px;right:20px;width:auto;max-width:none}
-    .filters.open{display:block;z-index:12}
-    .chip,.seg button,.region-row{min-height:44px}
-    .search{top:76px;left:20px;right:20px;width:auto;max-width:none}
-    .legend{width:calc(100vw - 40px);bottom:12px;padding:12px}
-    .legend .note{display:none}
-    .basemap-notice{left:20px;right:20px;bottom:98px;width:auto}
-    .filter-toast{left:20px;right:20px;top:auto;bottom:98px;width:auto;max-width:none}
     header .hstat{display:none}
-    .modal{padding:24px 20px;max-height:88vh}
-    .table-wrap{max-height:48vh}
+    .btn-ghost{min-height:44px;padding:9px 11px}
+    .search{top:68px;left:12px;right:12px;width:auto;max-width:none}
+    .search input{padding:11px 13px;font-size:16px}
+    .mobile-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:0;left:0;right:0;top:auto;bottom:0;position:fixed;z-index:9;
+      background:rgba(14,20,27,.97);border-top:1px solid var(--line);backdrop-filter:blur(10px);
+      padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+    .mobile-tools .btn-ghost{background:transparent;box-shadow:none;border:0;border-radius:9px;font-size:11.5px;font-weight:600;min-height:48px;padding:6px 2px;white-space:nowrap}
+    .mobile-tools .btn-ghost:active{background:rgba(240,86,46,.18)}
+    .filters{display:none}
+    .filters.open{display:block;position:fixed;z-index:11;top:auto;left:0;right:0;width:auto;max-width:none;
+      bottom:calc(60px + env(safe-area-inset-bottom));max-height:62vh;overflow-y:auto;
+      border-radius:16px 16px 0 0;padding:14px 16px 18px}
+    .filters .sheet-close{display:flex;position:absolute;top:10px;right:10px;width:38px;height:38px;align-items:center;justify-content:center;
+      border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.06);color:var(--text);font-size:18px;cursor:pointer}
+    .chip,.seg button,.region-row{min-height:44px}
+    .legend{left:12px;right:12px;width:auto;bottom:calc(70px + env(safe-area-inset-bottom));padding:9px 12px}
+    .legend h4{margin:0 0 6px;font-size:10px}
+    .legend .note{display:none}
+    .maplibregl-ctrl-bottom-right{bottom:calc(64px + env(safe-area-inset-bottom))}
+    .maplibregl-ctrl-bottom-left{bottom:calc(64px + env(safe-area-inset-bottom))}
+    .basemap-notice{left:12px;right:12px;width:auto;bottom:calc(150px + env(safe-area-inset-bottom))}
+    .filter-toast{left:12px;right:12px;top:auto;width:auto;max-width:none;bottom:calc(150px + env(safe-area-inset-bottom))}
+    .panel{width:100%;top:auto;bottom:0;height:80%;border-left:0;border-top:1px solid var(--line);transform:translateY(100%);border-radius:18px 18px 0 0;z-index:12;
+      padding-bottom:env(safe-area-inset-bottom)}
+    .panel.open{transform:translateY(0)}
+    body.panel-open .legend,body.panel-open .filters{display:none}
+    .modal{padding:24px 20px;max-height:86vh}
+    .table-wrap{max-height:46vh}
     th,td{padding:9px 10px}
   }
   body.panel-open .search,body.panel-open .mobile-tools{display:none}
@@ -280,6 +295,7 @@
   <button class="btn-ghost" id="mobile-about-btn">About &amp; Data</button>
 </div>
 <div class="filters" id="filters">
+  <button class="sheet-close" id="filters-close" aria-label="Close">&times;</button>
   <h4 id="filter-title">Share of residents in low income</h4>
   <div class="chips" id="tier-chips">
     <button class="chip" data-tier="critical"><span class="sw" style="background:var(--critical)"></span>Very high</button>
@@ -962,6 +978,7 @@ window.addEventListener("DOMContentLoaded",function(){
   document.getElementById("table-btn").onclick=openDataTable;
   document.getElementById("mobile-table-btn").onclick=openDataTable;
   document.getElementById("mobile-filter-btn").onclick=toggleFilters;
+  var fcl=document.getElementById("filters-close"); if(fcl) fcl.onclick=toggleFilters;
   document.getElementById("data-table-close").onclick=closeDataTable;
   var tableSearch=document.getElementById("table-search"); if(tableSearch) tableSearch.oninput=renderDataTable;
   document.getElementById("skip-data").onclick=function(e){ e.preventDefault(); openDataTable(); };
