@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /The-Food-Gap.html
 
 Sitemap: https://foodgap.github.io/sitemap.xml
