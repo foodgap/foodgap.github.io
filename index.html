@@ -242,7 +242,7 @@
     .maplibregl-ctrl-bottom-left{bottom:calc(64px + env(safe-area-inset-bottom))}
     .basemap-notice{left:12px;right:12px;width:auto;bottom:calc(150px + env(safe-area-inset-bottom))}
     .filter-toast{left:12px;right:12px;top:auto;width:auto;max-width:none;bottom:calc(150px + env(safe-area-inset-bottom))}
-    .panel{width:100%;top:auto;bottom:0;height:80%;border-left:0;border-top:1px solid var(--line);transform:translateY(100%);border-radius:18px 18px 0 0;z-index:12;
+    .panel{width:100%;top:auto;bottom:0;height:62%;border-left:0;border-top:1px solid var(--line);transform:translateY(100%);border-radius:18px 18px 0 0;z-index:12;
       padding-bottom:env(safe-area-inset-bottom)}
     .panel.open{transform:translateY(0)}
     body.panel-open .legend,body.panel-open .filters{display:none}
@@ -736,10 +736,18 @@ window.addEventListener("DOMContentLoaded",function(){
   }
   var map=new maplibregl.Map({container:"map",style:baseMapStyle(),
     center:[-96,60],zoom:3,minZoom:1.8,maxZoom:13,maxBounds:[[-175,30],[-35,87]],dragRotate:false,attributionControl:true});
-  map.touchZoomRotate.disableRotation(); map.addControl(new maplibregl.NavigationControl({showCompass:false}),"bottom-right");
+  map.touchZoomRotate.disableRotation();
+  if(window.innerWidth<=720) map.setMinZoom(1.0); map.addControl(new maplibregl.NavigationControl({showCompass:false}),"bottom-right");
   var colorExpr=["match",["get","tier"],"critical","#e64545","severe","#f0562e","moderate","#fb9a3c","minor","#fdcc5c","#888"];
   var HOME=[[-141,41.5],[-52.5,70]];
-  function fit(){ map.fitBounds(HOME,{padding:{top:120,bottom:44,left:44,right:300},duration:0}); }
+  var MOB=function(){return window.innerWidth<=720;};
+  function safePad(p){ try{var c=map.getContainer(),w=c.clientWidth,h=c.clientHeight;
+    var q={top:p.top||0,bottom:p.bottom||0,left:p.left||0,right:p.right||0},s;
+    if(q.left+q.right>w*0.9){s=(w*0.9)/(q.left+q.right);q.left=Math.floor(q.left*s);q.right=Math.floor(q.right*s);}
+    if(q.top+q.bottom>h*0.9){s=(h*0.9)/(q.top+q.bottom);q.top=Math.floor(q.top*s);q.bottom=Math.floor(q.bottom*s);}
+    return q;}catch(e){return {top:20,bottom:20,left:20,right:20};} }
+  function fitSafe(b,o){ try{o=o||{};o.padding=safePad(o.padding||{});map.fitBounds(b,o);}catch(e){} }
+  function fit(){ fitSafe(HOME,{padding:MOB()?{top:130,bottom:150,left:12,right:12}:{top:120,bottom:44,left:44,right:300},duration:0}); }
   function hasDivisionSource(){ return map.getSource && !!map.getSource("divisions"); }
   var basemapFailed=false;
   function showBasemapFallback(){
@@ -831,7 +839,7 @@ window.addEventListener("DOMContentLoaded",function(){
     if(moveFocus){var heading=document.getElementById("panel-title"); if(heading) heading.focus({preventScroll:true});}
     try{ history.replaceState(null,"",langUrl(p.code)); }catch(e){}
     clearSelected(); selectedDivision=p.code; if(hasDivisionSource()) map.setFeatureState({source:"divisions",id:p.code},{selected:true});
-    if(geom){var bb=bboxOf(geom); map.fitBounds([[bb[0],bb[1]],[bb[2],bb[3]]],{padding:{top:70,bottom:70,left:60,right:430},maxZoom:7,duration:dur(800)});}
+    if(geom){var bb=bboxOf(geom); fitSafe([[bb[0],bb[1]],[bb[2],bb[3]]],{padding:MOB()?{top:84,bottom:Math.round(window.innerHeight*0.66),left:24,right:24}:{top:70,bottom:70,left:60,right:430},maxZoom:7,duration:dur(800)});}
   }
   function openByCode(code){
     for(var i=0;i<CAN.features.length;i++){ if(CAN.features[i].properties.code===code){ selectDivision(CAN.features[i].properties,CAN.features[i].geometry); return; } }
@@ -839,7 +847,7 @@ window.addEventListener("DOMContentLoaded",function(){
   function closePanel(){ var wasOpen=panel.classList.contains("open"); panel.classList.remove("open"); document.body.classList.remove("panel-open"); curKey=null; clearSelected();
     currentSelection=null;
     try{ history.replaceState(null,"",langUrl(null)); }catch(e){}
-    if(wasOpen) map.fitBounds(HOME,{padding:{top:120,bottom:44,left:44,right:40},duration:dur(700)}); }
+    if(wasOpen) fitSafe(HOME,{padding:MOB()?{top:130,bottom:150,left:12,right:12}:{top:120,bottom:44,left:44,right:40},duration:dur(700)}); }
   document.getElementById("panel-close").onclick=closePanel;
   function copyLink(btn){var text=location.origin+langUrl(curKey||"");var o=btn.textContent;
     var done=function(){btn.textContent=tr("copied")+" ✓"; setTimeout(function(){btn.textContent=o;},1600);};
