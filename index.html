@@ -223,10 +223,12 @@
     .btn-ghost{min-height:44px;padding:9px 11px}
     .search{top:68px;left:12px;right:12px;width:auto;max-width:none}
     .search input{padding:11px 13px;font-size:16px}
-    .mobile-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:0;left:0;right:0;top:auto;bottom:0;position:fixed;z-index:9;
+    .mobile-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;left:0;right:0;top:auto;bottom:0;position:fixed;z-index:9;
       background:rgba(14,20,27,.97);border-top:1px solid var(--line);backdrop-filter:blur(10px);
-      padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
-    .mobile-tools .btn-ghost{background:transparent;box-shadow:none;border:0;border-radius:9px;font-size:11.5px;font-weight:600;min-height:48px;padding:6px 2px;white-space:nowrap}
+      padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+    .mobile-tools .btn-ghost{display:flex;align-items:center;justify-content:center;text-align:center;
+      background:transparent;box-shadow:none;border:0;border-radius:9px;font-size:10px;font-weight:600;
+      min-height:46px;min-width:0;padding:4px 2px;white-space:normal;line-height:1.15;overflow:hidden}
     .mobile-tools .btn-ghost:active{background:rgba(240,86,46,.18)}
     .filters{display:none}
     .filters.open{display:block;position:fixed;z-index:11;top:auto;left:0;right:0;width:auto;max-width:none;
