@@ -475,7 +475,7 @@
     <button class="cta" id="data-table-close">Close table</button>
   </div>
 </div>
-<script src="data.js?v=4" defer></script>
+<script src="data.js?v=5" defer></script>
 <script src="../maplibre-gl.js" defer></script>
 <script>
 window.addEventListener("DOMContentLoaded",function(){
@@ -841,7 +841,7 @@ window.addEventListener("DOMContentLoaded",function(){
       '<div class="stat"><div class="v">'+fmt(p.num_deserts)+'</div><div class="k">Food-desert tracts</div></div>'+
       '<div class="stat"><div class="v">'+fmt(p.people_affected)+'</div><div class="k">People with low food access</div></div>'+
       '<div class="stat"><div class="v">'+(!num(p.population)?fmt(p.population):tr("noData"))+'</div><div class="k">County population ('+(p.pop_year||2023)+' est.)</div></div>'+
-      '<div class="stat"><div class="v">'+(!num(p.stores)?fmt(p.stores):tr("noData"))+'</div><div class="k">Grocery stores in county (2020)'+(!num(p.stores_per_1k)?' · '+p.stores_per_1k+' per 1,000 residents':'')+'</div></div>'+
+      '<div class="stat"><div class="v">'+(!num(p.stores)?fmt(p.stores):tr("noData"))+'</div><div class="k">Grocery stores in county ('+(p.stores_year||2020)+')'+(!num(p.stores_per_1k)?' · '+p.stores_per_1k+' per 1,000 residents':'')+'</div></div>'+
       '<div class="stat"><div class="v">'+(!num(p.poverty_rate)?pct(p.poverty_rate):tr("noData"))+'</div><div class="k">Avg poverty rate</div></div>'+
       '<div class="stat"><div class="v">'+(!num(mi)?money(mi):tr("noData"))+'</div><div class="k">Median family income (US$, USDA Atlas)</div></div>'+
       '<div class="stat"><div class="v">'+(!num(p.no_vehicle_share)?pct(p.no_vehicle_share):tr("noData"))+'</div><div class="k">Households without a vehicle</div></div>'+
