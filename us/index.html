@@ -840,6 +840,7 @@ window.addEventListener("DOMContentLoaded",function(){
       '<div class="narrative">'+narr+'</div><div class="section-t">'+tr("numbers")+'</div><div class="grid">'+
       '<div class="stat"><div class="v">'+fmt(p.num_deserts)+'</div><div class="k">Food-desert tracts</div></div>'+
       '<div class="stat"><div class="v">'+fmt(p.people_affected)+'</div><div class="k">People with low food access</div></div>'+
+      '<div class="stat"><div class="v">'+(!num(p.population)?fmt(p.population):tr("noData"))+'</div><div class="k">County population (2023 est.)</div></div>'+
       '<div class="stat"><div class="v">'+(!num(p.stores)?fmt(p.stores):tr("noData"))+'</div><div class="k">Grocery stores in county (2020)'+(!num(p.stores_per_1k)?' · '+p.stores_per_1k+' per 1,000 residents':'')+'</div></div>'+
       '<div class="stat"><div class="v">'+(!num(p.poverty_rate)?pct(p.poverty_rate):tr("noData"))+'</div><div class="k">Avg poverty rate</div></div>'+
       '<div class="stat"><div class="v">'+(!num(mi)?money(mi):tr("noData"))+'</div><div class="k">Median family income (US$, USDA Atlas)</div></div>'+
