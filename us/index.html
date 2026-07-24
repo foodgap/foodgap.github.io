@@ -475,7 +475,7 @@
     <button class="cta" id="data-table-close">Close table</button>
   </div>
 </div>
-<script src="data.js?v=3" defer></script>
+<script src="data.js?v=4" defer></script>
 <script src="../maplibre-gl.js" defer></script>
 <script>
 window.addEventListener("DOMContentLoaded",function(){
@@ -855,7 +855,7 @@ window.addEventListener("DOMContentLoaded",function(){
       '<div class="cmp">'+
         cmpRow(tr("cmpRate"),p.rate,CANNAT,0,100,"",false,"",p.rate+" / 100")+
         (!num(mi)?cmpRow(tr("cmpIncome"),Math.round(mi/1000),Math.round(CANMED/1000),40,185,"k",true,"US$",lang==="fr"?fmt(Math.round(mi/1000))+" k$ CA":"US$"+fmt(Math.round(mi/1000))+"k"):"")+
-        (!num(p.life_expectancy)?cmpRow("Life expectancy",p.life_expectancy,USX.life||78.6,65,85,"",false,"",p.life_expectancy+" yrs"):"")+
+        (!num(p.life_expectancy)?cmpRow("Life expectancy",p.life_expectancy,USX.life||78.6,65,85,"",true,"",p.life_expectancy+" yrs"):"")+
         (!num(lp)?cmpRow(tr("cmpLettuce"),lp,CANLET,2,6.5,"",false,"US$",money2(lp)):"")+
       '</div>'+
       '<div class="p-foot">'+tr("panelFoot")+'</div>';
