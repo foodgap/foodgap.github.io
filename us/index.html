@@ -4,15 +4,15 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>The Food Gap — Food-Desert Severity Across the United States</title>
-<meta name="description" content="An interactive map of all 293 Canadian counties, shaded by low-income prevalence (2021 Census income year 2020, LIM-AT) — a leading risk factor for household food insecurity." />
+<meta name="description" content="An interactive map of all 293 American counties, shaded by low-income prevalence (USDA Food Access Research Atlas, 2019) — a leading risk factor for household food insecurity." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://foodgap.github.io/" />
 <meta property="og:title" content="The Food Gap — Food-Desert Severity Across the United States" />
-<meta property="og:description" content="All 293 Canadian counties: low-income prevalence, household income, grocery costs and the lettuce test — built entirely on Statistics Canada data." />
+<meta property="og:description" content="All 2,083 U.S. counties containing food deserts: severity, poverty, income, grocery spending and store access — built on USDA, CDC, Census and BLS data." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://foodgap.github.io/" />
 <meta property="og:image" content="https://foodgap.github.io/og-image.png" />
-<meta property="og:image:alt" content="The Food Gap — food-insecurity risk across Canada" />
+<meta property="og:image:alt" content="The Food Gap — food-desert severity across the United States" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -287,7 +287,7 @@
   </div>
 </noscript>
 <a class="skip-link" href="#data-table-modal" id="skip-data">Skip to data table</a>
-<div id="map" role="img" aria-label="Interactive choropleth map of Canadian counties by low-income prevalence"></div>
+<div id="map" role="img" aria-label="Interactive choropleth map of American counties by low-income prevalence"></div>
 <div id="status" class="sr-only" aria-live="polite"></div>
 <div class="basemap-notice" id="basemap-notice" role="status" aria-live="polite">Basemap unavailable. Data layer still works.</div>
 <header>
@@ -306,7 +306,7 @@
   <button class="btn-ghost" id="table-btn">Data table</button>
 </header>
 <div class="search">
-  <input id="search" type="text" placeholder="Search any city, town, region or province…" autocomplete="off" aria-label="Search any city, town, region or province" aria-controls="results" aria-expanded="false" />
+  <input id="search" type="text" placeholder="Search any county or state…" autocomplete="off" aria-label="Search any county or state" aria-controls="results" aria-expanded="false" />
   <div class="results" id="results" role="listbox"></div>
 </div>
 <div class="mobile-tools" aria-label="Map tools">
@@ -346,7 +346,7 @@
   </div>
   <div class="ramp-labels"><span id="legend-lo">Low</span><span id="legend-hi">Very high</span></div>
   <div class="note" id="legend-note"><b>Each county</b> is shaded by the share of its residents living in low income
-    (LIM-AT, 2021 Census income year 2020) — a leading <b>risk factor for food insecurity</b>. Click a region for detail.</div>
+    (USDA LILA, 2021 Census income year 2020) — a leading <b>risk factor for food insecurity</b>. Click a region for detail.</div>
 </div>
 <div class="panel" id="panel">
   <button class="close" id="panel-close" aria-label="Close">&times;</button>
@@ -355,11 +355,11 @@
 <div class="modal-bg open" id="modal">
   <div class="modal">
     <div class="tag">THE FOOD GAP</div>
-    <h1>Which Canadian communities face the greatest risk of food insecurity?</h1>
+    <h1>Which American communities face the greatest risk of food insecurity?</h1>
     <p>When a household's income falls too low, reliable access to enough healthy food is often the first
-      thing to go. <b>Low income is the strongest predictor of household food insecurity</b> in Canada.</p>
+      thing to go. <b>Low income is the strongest predictor of household food insecurity</b> in the United States.</p>
     <p>This map shades <b>all 293 counties</b> by the share of residents living in low income
-      (2021 Census income year 2020, LIM-AT). <b>Click any region</b> to see who is affected and how it compares nationally.</p>
+      (USDA Food Access Research Atlas, 2019). <b>Click any region</b> to see who is affected and how it compares nationally.</p>
     <div class="kstat">
       <div><div class="n" id="m-areas">—</div><div class="l">counties</div></div>
       <div><div class="n" id="m-people">—</div><div class="l">people with low food access</div></div>
@@ -371,8 +371,8 @@
       (low income and household income, tables 98-10-0103 and 98-10-0057) and
       <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1110012501" target="_blank" rel="noopener">Survey of Household Spending</a>
       (detailed food spending, tables 11-10-0125 and 11-10-0233, 2023). Basemap © OpenStreetMap contributors © CARTO.
-      Adapted from Statistics Canada data under the <a href="https://www.statcan.gc.ca/en/reference/licence" target="_blank" rel="noopener">U.S. federal public-domain data</a>;
-      this does not constitute an endorsement by Statistics Canada.
+      Adapted from U.S. federal sources (USDA, CDC, Census, BLS) data under the <a href="https://www.statcan.gc.ca/en/reference/licence" target="_blank" rel="noopener">U.S. federal public-domain data</a>;
+      this does not constitute an endorsement by U.S. federal sources (USDA, CDC, Census, BLS).
       Privacy: static site, no accounts, no forms, no cookies, no analytics. See <a href="../PRIVACY.md" target="_blank" rel="noopener">Privacy note</a>.
     </div>
     <div class="version">Version <span id="app-version">—</span></div>
@@ -383,17 +383,17 @@
     <div class="tag">METHODOLOGY</div>
     <h1>How this map measures risk</h1>
     <h3>What is shown</h3>
-    <p>Every one of Canada's <b>293 counties</b> is shaded by its <b>low-income rate</b> — the share
+    <p>Every one of the United States's <b>293 counties</b> is shaded by its <b>low-income rate</b> — the share
       of people in private households whose after-tax income falls below the <b>Low-income Measure
-      (LIM-AT)</b>, i.e. half of the national median adjusted household income. Source: <b>Statistics
-      Canada, Census of Population 2021</b>, table 98-10-0103, income year 2020. National rate: <b>11.1%</b>.</p>
+      (USDA LILA)</b>, i.e. half of the national median adjusted household income. Source: <b>Statistics
+      the United States, Census of Population 2021</b>, table 98-10-0103, income year 2020. National rate: <b>11.1%</b>.</p>
     <h3>Region names</h3>
     <p>Some counties have no proper name in official statistics (e.g. "Division No. 6" in Alberta).
       For readability, those regions are shown as "<b>[largest community] Region</b>" — the community being
       the division's most populous municipality in the 2021 Census (table 98-10-0002). The official
       StatCan division name is always displayed beneath the title.</p>
     <h3>Why low income?</h3>
-    <p>Canada does not publish food-access or food-insecurity statistics below the provincial level. Low
+    <p>the United States does not publish food-access or food-insecurity statistics below the state-level level. Low
       income is the leading, well-documented <b>risk factor</b> for household food insecurity, so it serves
       here as the best available regional indicator — <b>an indicator of risk, not a direct measure of food
       insecurity</b>.</p>
@@ -404,29 +404,29 @@
     <p>Census divisions are classed <b>urban</b> when average population density is ≥ 100 people/km²
       (e.g. Toronto, Montréal, Vancouver) and <b>rural</b> otherwise. This is a derived classification.</p>
     <h3>Grocery spending</h3>
-    <p><b>All dollar amounts on this site are in Canadian dollars (CAD).</b> Each region also shows the
+    <p><b>All dollar amounts on this site are in American dollars (CAD).</b> Each region also shows the
       <b>average weekly household grocery spend</b> and the <b>share of that
-      spend going to fruits &amp; vegetables</b>, from <b>Statistics Canada's Survey of Household
+      spend going to fruits &amp; vegetables</b>, from <b>U.S. federal sources (USDA, CDC, Census, BLS)'s Survey of Household
       Spending</b>, reference year <b>2023</b>. Weekly spend = annual "food purchased from stores" per
       household ÷ 52. The fruits-&amp;-vegetables share = ("fruit, fruit preparations and nuts" +
       "vegetables and vegetable preparations") ÷ food purchased from stores — the same two StatCan
       categories in every region, so the measure is definitionally consistent nationwide (it includes
       fresh, frozen, canned and dried produce, and nuts).</p>
-    <p><b>Regional weekly-spend estimates.</b> The spending survey is not published below the provincial
-      level, so each provincial region's weekly figure is a <b>modelled estimate</b> that adjusts the
-      provincial average (table 11-10-0125) by the region's <b>real median household income</b>
+    <p><b>Regional weekly-spend estimates.</b> The spending survey is not published below the state-level
+      level, so each state-level region's weekly figure is a <b>modelled estimate</b> that adjusts the
+      state-level average (table 11-10-0125) by the region's <b>real median household income</b>
       (Census 2021, table 98-10-0057):</p>
-    <div class="formula">region weekly = provincial weekly × (region income ÷ provincial income)<sup>0.35</sup><br>
+    <div class="formula">region weekly = state-level weekly × (region income ÷ state-level income)<sup>0.35</sup><br>
       <b>0.35</b> ≈ the income elasticity of at-home food spending in the expenditure literature</div>
     <p><b>Territories</b> instead show the survey's real territorial-capital averages (Whitehorse,
       Yellowknife and Iqaluit; table 11-10-0233), <i>not</i> income-scaled — in the North, prices rather
       than incomes dominate grocery costs, and income-scaling would understate remote communities.
-      The fruits-&amp;-vegetables share is the provincial or capital average in all regions.</p>
+      The fruits-&amp;-vegetables share is the state-level or capital average in all regions.</p>
     <h3>The lettuce test</h3>
-    <p>Each region shows the price of <b>one head of iceberg lettuce</b>, in <b>Canadian dollars (CAD)</b>. Provinces use the <b>real
-      12-month average</b> (June 2025 – May 2026) from Statistics Canada's <i>Monthly average retail
+    <p>Each region shows the price of <b>one head of iceberg lettuce</b>, in <b>American dollars (CAD)</b>. Provinces use the <b>real
+      12-month average</b> (June 2025 – May 2026) from U.S. federal sources (USDA, CDC, Census, BLS)'s <i>Monthly average retail
       prices for selected products</i> (table 18-10-0245, product "Iceberg lettuce, unit"), applied to
-      every region in the province. No finer-than-provincial retail prices exist for the provinces. In the territories, however,
+      every region in the province. No finer-than-state-level retail prices exist for the states. In the territories, however,
       real regional surveys allow <b>division-specific estimates</b>: <b>NWT</b> divisions are priced from
       the communities they contain in the NWT Bureau of Statistics <i>Community Price Index</i> (food
       index, Yellowknife = 100; 2019, with differentials confirmed in the Bureau's 2024 grocery-price
@@ -439,13 +439,13 @@
     <h3>Limitations</h3>
     <ul>
       <li>Low income indicates <i>risk</i> of food insecurity; it is not a food-insecurity survey measure.</li>
-      <li>Regional weekly-spend figures are <i>modelled estimates</i> (income-adjusted provincial averages),
+      <li>Regional weekly-spend figures are <i>modelled estimates</i> (income-adjusted state-level averages),
         not direct survey observations; capital averages understate costs in remote Northern communities.</li>
       <li>Census 2021 income measures refer to <b>income year 2020</b>. Population counts include collective
         dwellings while low-income rates cover private households, so "people with low food access" totals are
         close approximations.</li>
       <li>Rates are from the 2021 Census; official 2021 StatCan boundary geometry is generalized for web display.</li>
-      <li>Provincial and territorial food-insecurity statistics (Statistics Canada, Canadian Income Survey)
+      <li>Provincial and territorial food-insecurity statistics (U.S. federal sources (USDA, CDC, Census, BLS), American Income Survey)
         provide the direct measure at a coarser geography.</li>
     </ul>
     <button class="cta" id="method-close">Got it</button>
@@ -456,14 +456,14 @@
     <div class="tag" id="data-table-tag">DATA TABLE</div>
     <h1 id="data-table-title">Census division data</h1>
     <div class="table-tools">
-      <input id="table-search" type="text" autocomplete="off" placeholder="Filter regions…" aria-label="Filter data table by region or province" />
+      <input id="table-search" type="text" autocomplete="off" placeholder="Filter regions…" aria-label="Filter data table by county or state" />
     </div>
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
             <th id="th-region" scope="col">Region</th>
-            <th id="th-province" scope="col">Province</th>
+            <th id="th-province" scope="col">State</th>
             <th id="dt-rate" scope="col" class="num">Low income</th>
             <th id="dt-people" scope="col" class="num">People</th>
             <th id="dt-setting" scope="col">Setting</th>
@@ -501,18 +501,18 @@ window.addEventListener("DOMContentLoaded",function(){
   var COPY={
     en:{
       title:"The Food Gap — Food-Desert Severity Across the United States",
-      description:"An interactive map of all 293 Canadian counties, shaded by low-income prevalence (2021 Census income year 2020, LIM-AT) — a leading risk factor for household food insecurity.",
+      description:"An interactive map of all 293 American counties, shaded by low-income prevalence (USDA Food Access Research Atlas, 2019) — a leading risk factor for household food insecurity.",
       tagline:"Mapping food-desert severity across the United States",
       censusDivisions:"counties", peopleLow:"people with low food access", method:"Methodology", about:"About & Data",
-      switchLabel:"Français", switchAria:"Passer au français", search:"Search any city, town, region or province…",
+      switchLabel:"Français", switchAria:"Passer au français", search:"Search any county or state…",
       table:"Data table", mobileFilters:"Filters", mobileTools:"Map tools", skipData:"Skip to data table",
-      mapLabel:"Interactive choropleth map of Canadian counties by low-income prevalence",
+      mapLabel:"Interactive choropleth map of American counties by low-income prevalence",
       statusTableOpen:"Data table opened", statusFiltersOpen:"Filters opened", statusFiltersClosed:"Filters closed", statusRegionOpen:"Region opened",
       searchNoResults:"No matching community or region", filterNoResults:"0 regions match", resetFilters:"Reset filters", dismiss:"Dismiss", storyPrefix:"Demo stop",
       basemapNotice:"Basemap unavailable. Data layer still works.",
       filterTitle:"Food-desert severity", threshold:"Severity ≥", legendTitle:"Food-desert severity (USDA 2019)",
       legendLow:"Low", legendHigh:"Very high",
-      legendNote:"<b>Each county</b> is shaded by the share of its residents living in low income (LIM-AT, 2021 Census income year 2020) — a leading <b>risk factor for food insecurity</b>. Click a region for detail.",
+      legendNote:"<b>Each county</b> is shaded by the share of its residents living in low income (USDA LILA, 2021 Census income year 2020) — a leading <b>risk factor for food insecurity</b>. Click a region for detail.",
       tiers:{critical:"Very high",severe:"High",moderate:"Moderate",minor:"Low"},
       settings:{all:"All",urban:"Urban",rural:"Rural"},
       badge:{urban:"urban",rural:"rural"},
@@ -521,31 +521,31 @@ window.addEventListener("DOMContentLoaded",function(){
       above:"above", below:"below", intro:"In", aboutRate:"about", residents:"of residents live in a low-income household", nationalRate:"the national rate of",
       predictor:"Low income is the strongest predictor of household food insecurity.",
       spendBoth:"Households here spend an estimated <b>{money} a week</b> on groceries ({scope}), with about <b>{produce}</b> of grocery spending going to fruits & vegetables ({pscope}).",
-      spendHigh:" That is among the highest grocery bills in Canada.",
+      spendHigh:" That is among the highest grocery bills in the United States.",
       spendOnly:"Households here spend an estimated <b>{money} a week</b> on groceries ({scope}).",
       numbers:"The numbers", rateStat:"Severity index (0–100)", peopleApprox:"People with low food access", population:"Population",
       medianIncome:"Median family income (US$, USDA Atlas)", grocerySpend:"Avg weekly grocery spend (US$, {scope})",
       groceryMissing:"Weekly grocery spend — not surveyed", produceShare:"Of groceries spent on fruits & vegetables ({scope})",
       produceMissing:"Fruits & vegetables share — not available", lettuceHead:"Head of iceberg lettuce ({scope}) — national avg {money}",
       lettuceTest:"The lettuce test", lettuceSentence:"A head of iceberg lettuce runs about <b>{money}</b> here ({scope}) — <b style=\"color:{color}\">{label}</b> against the {national} national average. {note}",
-      lettuceLabels:{cheap:"cheaper than most of Canada",expensive:"expensive",middle:"middle of the road"},
-      compared:"Compared to Canada", whiteLine:"White line marks the Canada-wide figure",
+      lettuceLabels:{cheap:"cheaper than most of the U.S.",expensive:"expensive",middle:"middle of the road"},
+      compared:"Compared to the United States", whiteLine:"White line marks the U.S. national figure",
       cmpRate:"Severity index", cmpIncome:"Median household income", cmpSpend:"Weekly grocery spend", cmpProduce:"Share on fruits & vegetables", cmpLettuce:"Head of lettuce",
-      panelFoot:"<b>Severity, measured.</b> Canada publishes no food-access data below the province level, so regions are shaded by their low-income rate (2021 Census income year 2020, LIM-AT) — a leading risk factor for food insecurity, not a direct measure of it. Source: Statistics Canada, table 98-10-0103. Weekly grocery spend in provincial regions is a <b>modelled estimate</b>: the provincial average (Survey of Household Spending 2023, table 11-10-0125) adjusted by this region's real median household income (Census 2021, table 98-10-0057). Territories show real territorial-capital averages (table 11-10-0233) — remote-community costs run higher. Fruits & vegetables share is the provincial / capital average (incl. fresh, preserved and nuts). All dollar figures are in <b>Canadian dollars (CAD)</b>. See <b>Methodology</b>.",
+      panelFoot:"<b>Severity, measured.</b> The index blends low-access population share (35%), poverty (25%), no-vehicle households (25%) and distance depth (15%) across USDA-designated food-desert tracts (2019), ranked 0–100 nationally. Store counts: USDA Food Environment Atlas, 2020. Weekly spend modelled from BLS Consumer Expenditure 2024 (US$6,224 food-at-home) adjusted by county income; fresh-produce share is the CE 2024 national average. All figures in US$.",
       tableTag:"DATA TABLE", tableTitle:"Census division data", tableSearch:"Filter regions…",
-      tableSearchAria:"Filter data table by region or province", tableRegion:"Region", tableProvince:"Province",
+      tableSearchAria:"Filter data table by county or state", tableRegion:"Region", tableProvince:"State",
       tableRate:"Low income", tablePeople:"People", tableSetting:"Setting", tableClose:"Close table",
       tableOpenRegion:"Open region", tableNoResults:"No matching regions", close:"Close",
       searchRegion:"in low income", shareNationally:"share nationally", cityTown:"City/town", inWord:"in", noData:"n/a"
     },
     fr:{
-      title:"The Food Gap — risque d'insécurité alimentaire au Canada",
-      description:"Carte interactive des 293 divisions de recensement du Canada, colorées selon la fréquence du faible revenu (Recensement de 2021, année de revenu 2020, MFR-ApI), un important facteur de risque d'insécurité alimentaire des ménages.",
-      tagline:"Cartographie du risque d'insécurité alimentaire au Canada",
+      title:"The Food Gap — risque d'insécurité alimentaire au the United States",
+      description:"Carte interactive des 293 divisions de recensement du the United States, colorées selon la fréquence du faible revenu (Recensement de 2021, année de revenu 2020, MFR-ApI), un important facteur de risque d'insécurité alimentaire des ménages.",
+      tagline:"Cartographie du risque d'insécurité alimentaire au the United States",
       censusDivisions:"divisions de recensement", peopleLow:"personnes à faible revenu", method:"Méthodologie", about:"À propos et données",
       switchLabel:"English", switchAria:"Switch to English", search:"Chercher une ville, une région ou une province…",
       table:"Tableau des données", mobileFilters:"Filtres", mobileTools:"Outils de carte", skipData:"Aller au tableau des données",
-      mapLabel:"Carte choroplèthe interactive des divisions de recensement du Canada selon la fréquence du faible revenu",
+      mapLabel:"Carte choroplèthe interactive des divisions de recensement du the United States selon la fréquence du faible revenu",
       statusTableOpen:"Tableau des données ouvert", statusFiltersOpen:"Filtres ouverts", statusFiltersClosed:"Filtres fermés", statusRegionOpen:"Région ouverte",
       searchNoResults:"Aucune communauté ou région correspondante", filterNoResults:"0 région correspond", resetFilters:"Réinitialiser les filtres", dismiss:"Fermer", storyPrefix:"Étape de démonstration",
       basemapNotice:"Fond de carte indisponible. La couche de données fonctionne toujours.",
@@ -560,19 +560,19 @@ window.addEventListener("DOMContentLoaded",function(){
       above:"au-dessus", below:"en dessous", intro:"Dans", aboutRate:"environ", residents:"des résidents vivent dans un ménage à faible revenu", nationalRate:"du taux national de",
       predictor:"Le faible revenu est le principal facteur de risque d'insécurité alimentaire des ménages.",
       spendBoth:"Les ménages y consacrent environ <b>{money} par semaine</b> à l'épicerie ({scope}), dont environ <b>{produce}</b> aux fruits et légumes ({pscope}).",
-      spendHigh:" C'est parmi les factures d'épicerie les plus élevées au Canada.",
+      spendHigh:" C'est parmi les factures d'épicerie les plus élevées au the United States.",
       spendOnly:"Les ménages y consacrent environ <b>{money} par semaine</b> à l'épicerie ({scope}).",
       numbers:"Les chiffres", rateStat:"Fréquence du faible revenu (MFR-ApI)", peopleApprox:"Personnes à faible revenu (approx.)", population:"Population",
       medianIncome:"Revenu médian du ménage (US$, Recensement 2021)", grocerySpend:"Dépenses hebdomadaires moyennes d'épicerie (US$, {scope})",
       groceryMissing:"Dépenses hebdomadaires d'épicerie — non enquêtées", produceShare:"Part de l'épicerie consacrée aux fruits et légumes ({scope})",
       produceMissing:"Part fruits et légumes — non disponible", lettuceHead:"Laitue iceberg ({scope}) — moyenne nationale {money}",
       lettuceTest:"Le test de la laitue", lettuceSentence:"Une laitue iceberg coûte environ <b>{money}</b> ici ({scope}) — <b style=\"color:{color}\">{label}</b> par rapport à la moyenne nationale de {national}. {note}",
-      lettuceLabels:{cheap:"moins chère que dans la plupart du Canada",expensive:"chère",middle:"dans la moyenne"},
-      compared:"Comparaison avec le Canada", whiteLine:"La ligne blanche indique la valeur canadienne",
+      lettuceLabels:{cheap:"moins chère que dans la plupart du the United States",expensive:"chère",middle:"dans la moyenne"},
+      compared:"Comparaison avec le the United States", whiteLine:"La ligne blanche indique la valeur canadienne",
       cmpRate:"Taux de faible revenu", cmpIncome:"Revenu médian du ménage", cmpSpend:"Dépenses hebdomadaires d'épicerie", cmpProduce:"Part consacrée aux fruits et légumes", cmpLettuce:"Laitue",
-      panelFoot:"<b>Un indicateur de risque.</b> Le Canada ne publie pas de données sur l'accès aux aliments sous le niveau provincial; les régions sont donc colorées selon leur taux de faible revenu (Recensement de 2021, année de revenu 2020, MFR-ApI) — un facteur de risque d'insécurité alimentaire, et non une mesure directe. Source : Statistique Canada, tableau 98-10-0103. Les dépenses hebdomadaires d'épicerie dans les régions provinciales sont une <b>estimation modélisée</b> : la moyenne provinciale (Enquête sur les dépenses des ménages 2023, tableau 11-10-0125) ajustée selon le revenu médian réel des ménages de la région (Recensement 2021, tableau 98-10-0057). Les territoires affichent les moyennes réelles des capitales territoriales (tableau 11-10-0233); les coûts dans les collectivités éloignées sont plus élevés. La part des fruits et légumes correspond à la moyenne provinciale ou de la capitale (y compris produits frais, conservés et noix). Tous les montants sont en <b>dollars canadiens (CAD)</b>. Voir la <b>Méthodologie</b>.",
+      panelFoot:"<b>Un indicateur de risque.</b> Le the United States ne publie pas de données sur l'accès aux aliments sous le niveau state-level; les régions sont donc colorées selon leur taux de faible revenu (Recensement de 2021, année de revenu 2020, MFR-ApI) — un facteur de risque d'insécurité alimentaire, et non une mesure directe. Source : Statistique the United States, tableau 98-10-0103. Les dépenses hebdomadaires d'épicerie dans les régions state-leveles sont une <b>estimation modélisée</b> : la moyenne state-levele (Enquête sur les dépenses des ménages 2023, tableau 11-10-0125) ajustée selon le revenu médian réel des ménages de la région (Recensement 2021, tableau 98-10-0057). Les territoires affichent les moyennes réelles des capitales territoriales (tableau 11-10-0233); les coûts dans les collectivités éloignées sont plus élevés. La part des fruits et légumes correspond à la moyenne state-levele ou de la capitale (y compris produits frais, conservés et noix). Tous les montants sont en <b>dollars canadiens (CAD)</b>. Voir la <b>Méthodologie</b>.",
       tableTag:"TABLEAU DES DONNÉES", tableTitle:"Données par division de recensement", tableSearch:"Filtrer les régions…",
-      tableSearchAria:"Filtrer le tableau par région ou province", tableRegion:"Région", tableProvince:"Province",
+      tableSearchAria:"Filtrer le tableau par région ou province", tableRegion:"Région", tableProvince:"State",
       tableRate:"Faible revenu", tablePeople:"Personnes", tableSetting:"Type", tableClose:"Fermer le tableau",
       tableOpenRegion:"Ouvrir la région", tableNoResults:"Aucune région correspondante", close:"Fermer",
       searchRegion:"à faible revenu", shareNationally:"à l'échelle nationale", cityTown:"Ville/localité", inWord:"dans", noData:"s.o."
@@ -608,49 +608,49 @@ window.addEventListener("DOMContentLoaded",function(){
   function aboutHtml(){
     if(lang==="fr") return '<div class="tag">THE FOOD GAP</div>'+
       '<h1 id="about-title">Quelles communautés canadiennes présentent le plus grand risque d\'insécurité alimentaire?</h1>'+
-      '<p>Quand le revenu d\'un ménage devient trop faible, l\'accès fiable à une alimentation saine et suffisante est souvent l\'une des premières choses compromises. <b>Le faible revenu est le principal facteur de risque d\'insécurité alimentaire des ménages</b> au Canada.</p>'+
-      '<p>Cette carte colore <b>les 293 divisions de recensement</b> selon la part des résidents à faible revenu (Recensement de 2021, année de revenu 2020, MFR-ApI). <b>Cliquez sur une région</b> pour voir qui est touché et comment elle se compare au Canada.</p>'+
-      '<div class="kstat"><div><div class="n" id="m-areas">—</div><div class="l">divisions de recensement</div></div><div><div class="n" id="m-people">—</div><div class="l">personnes à faible revenu</div></div><div><div class="n" id="m-provs">—</div><div class="l">provinces et territoires</div></div></div>'+
+      '<p>Quand le revenu d\'un ménage devient trop faible, l\'accès fiable à une alimentation saine et suffisante est souvent l\'une des premières choses compromises. <b>Le faible revenu est le principal facteur de risque d\'insécurité alimentaire des ménages</b> au the United States.</p>'+
+      '<p>Cette carte colore <b>les 293 divisions de recensement</b> selon la part des résidents à faible revenu (Recensement de 2021, année de revenu 2020, MFR-ApI). <b>Cliquez sur une région</b> pour voir qui est touché et comment elle se compare au the United States.</p>'+
+      '<div class="kstat"><div><div class="n" id="m-areas">—</div><div class="l">divisions de recensement</div></div><div><div class="n" id="m-people">—</div><div class="l">personnes à faible revenu</div></div><div><div class="n" id="m-provs">—</div><div class="l">states et territoires</div></div></div>'+
       '<button class="cta" id="enter-btn">Explorer la carte</button>'+
-      '<div class="src">Données : <a href="https://www12.statcan.gc.ca/census-recensement/2021/" target="_blank" rel="noopener">Statistique Canada, Recensement de la population de 2021</a> (faible revenu et revenu des ménages, tableaux 98-10-0103 et 98-10-0057) et <a href="https://www150.statcan.gc.ca/t1/tbl1/fr/tv.action?pid=1110012501" target="_blank" rel="noopener">Enquête sur les dépenses des ménages</a> (dépenses alimentaires détaillées, tableaux 11-10-0125 et 11-10-0233, 2023). Fond de carte © contributeurs OpenStreetMap © CARTO. Adapté de données de Statistique Canada sous la <a href="https://www.statcan.gc.ca/fr/reference/licence" target="_blank" rel="noopener">Licence ouverte de Statistique Canada</a>; cela ne constitue pas une approbation par Statistique Canada. Confidentialité : site statique, sans comptes, sans formulaires, sans témoins et sans outils d’analyse. Voir la <a href="../PRIVACY.md" target="_blank" rel="noopener">note de confidentialité</a>.</div>'+
+      '<div class="src">Données : <a href="https://www12.statcan.gc.ca/census-recensement/2021/" target="_blank" rel="noopener">Statistique the United States, Recensement de la population de 2021</a> (faible revenu et revenu des ménages, tableaux 98-10-0103 et 98-10-0057) et <a href="https://www150.statcan.gc.ca/t1/tbl1/fr/tv.action?pid=1110012501" target="_blank" rel="noopener">Enquête sur les dépenses des ménages</a> (dépenses alimentaires détaillées, tableaux 11-10-0125 et 11-10-0233, 2023). Fond de carte © contributeurs OpenStreetMap © CARTO. Adapté de données de Statistique the United States sous la <a href="https://www.statcan.gc.ca/fr/reference/licence" target="_blank" rel="noopener">Licence ouverte de Statistique the United States</a>; cela ne constitue pas une approbation par Statistique the United States. Confidentialité : site statique, sans comptes, sans formulaires, sans témoins et sans outils d’analyse. Voir la <a href="../PRIVACY.md" target="_blank" rel="noopener">note de confidentialité</a>.</div>'+
       '<div class="version">Version <span id="app-version">—</span></div>';
     return '<div class="tag">THE FOOD GAP</div>'+
-      '<h1 id="about-title">Which Canadian communities face the greatest risk of food insecurity?</h1>'+
-      '<p>When a household\'s income falls too low, reliable access to enough healthy food is often the first thing to go. <b>Low income is the strongest predictor of household food insecurity</b> in Canada.</p>'+
-      '<p>This map shades <b>all 293 counties</b> by the share of residents living in low income (2021 Census income year 2020, LIM-AT). <b>Click any region</b> to see who is affected and how it compares nationally.</p>'+
+      '<h1 id="about-title">Which American communities face the greatest risk of food insecurity?</h1>'+
+      '<p>When a household\'s income falls too low, reliable access to enough healthy food is often the first thing to go. <b>Low income is the strongest predictor of household food insecurity</b> in the United States.</p>'+
+      '<p>This map shades <b>all 293 counties</b> by the share of residents living in low income (USDA Food Access Research Atlas, 2019). <b>Click any region</b> to see who is affected and how it compares nationally.</p>'+
       '<div class="kstat"><div><div class="n" id="m-areas">—</div><div class="l">counties</div></div><div><div class="n" id="m-people">—</div><div class="l">people with low food access</div></div><div><div class="n" id="m-provs">—</div><div class="l">states + DC</div></div></div>'+
       '<button class="cta" id="enter-btn">Explore the map</button>'+
-      '<div class="src">Data: <a href="https://www12.statcan.gc.ca/census-recensement/2021/" target="_blank" rel="noopener">USDA ERS Food Access Research Atlas (2019), CDC USALEEP, U.S. Census</a> (low income and household income, tables 98-10-0103 and 98-10-0057) and <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1110012501" target="_blank" rel="noopener">Survey of Household Spending</a> (detailed food spending, tables 11-10-0125 and 11-10-0233, 2023). Basemap © OpenStreetMap contributors © CARTO. Adapted from Statistics Canada data under the <a href="https://www.statcan.gc.ca/en/reference/licence" target="_blank" rel="noopener">U.S. federal public-domain data</a>; this does not constitute an endorsement by Statistics Canada. Privacy: static site, no accounts, no forms, no cookies, no analytics. See <a href="../PRIVACY.md" target="_blank" rel="noopener">Privacy note</a>.</div>'+
+      '<div class="src">Data: <a href="https://www12.statcan.gc.ca/census-recensement/2021/" target="_blank" rel="noopener">USDA ERS Food Access Research Atlas (2019), CDC USALEEP, U.S. Census</a> (low income and household income, tables 98-10-0103 and 98-10-0057) and <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1110012501" target="_blank" rel="noopener">Survey of Household Spending</a> (detailed food spending, tables 11-10-0125 and 11-10-0233, 2023). Basemap © OpenStreetMap contributors © CARTO. Adapted from U.S. federal sources (USDA, CDC, Census, BLS) data under the <a href="https://www.statcan.gc.ca/en/reference/licence" target="_blank" rel="noopener">U.S. federal public-domain data</a>; this does not constitute an endorsement by U.S. federal sources (USDA, CDC, Census, BLS). Privacy: static site, no accounts, no forms, no cookies, no analytics. See <a href="../PRIVACY.md" target="_blank" rel="noopener">Privacy note</a>.</div>'+
       '<div class="version">Version <span id="app-version">—</span></div>';
   }
 
   function methodHtml(){
     if(lang==="fr") return '<div class="tag">MÉTHODOLOGIE</div>'+
       '<h1 id="method-title">Comment cette carte mesure le risque</h1>'+
-      '<h3>Ce qui est montré</h3><p>Chacune des <b>293 divisions de recensement</b> du Canada est colorée selon son <b>taux de faible revenu</b> — la part des personnes en ménages privés dont le revenu après impôt est inférieur à la <b>mesure de faible revenu après impôt (MFR-ApI)</b>, soit la moitié du revenu médian national ajusté des ménages. Source : <b>Statistique Canada, Recensement de la population de 2021</b>, tableau 98-10-0103, année de revenu 2020. Taux national : <b>'+pct(CANNAT)+'</b>.</p>'+
-      '<h3>Noms des régions</h3><p>Certaines divisions de recensement n\'ont pas de nom propre dans les statistiques officielles (p. ex. « Division No. 6 » en Alberta). Pour faciliter la lecture, ces régions sont affichées comme « <b>Région de [plus grande collectivité]</b> », selon la municipalité la plus peuplée de la division dans le Recensement de 2021 (tableau 98-10-0002). Le nom officiel de Statistique Canada est toujours affiché sous le titre.</p>'+
-      '<h3>Pourquoi le faible revenu?</h3><p>Le Canada ne publie pas de statistiques sur l\'accès aux aliments ou l\'insécurité alimentaire sous le niveau provincial. Le faible revenu est le principal <b>facteur de risque</b> bien documenté de l\'insécurité alimentaire des ménages; il sert donc ici de meilleur indicateur régional disponible — <b>un indicateur de risque, et non une mesure directe de l\'insécurité alimentaire</b>.</p>'+
+      '<h3>Ce qui est montré</h3><p>Chacune des <b>293 divisions de recensement</b> du the United States est colorée selon son <b>taux de faible revenu</b> — la part des personnes en ménages privés dont le revenu après impôt est inférieur à la <b>mesure de faible revenu après impôt (MFR-ApI)</b>, soit la moitié du revenu médian national ajusté des ménages. Source : <b>Statistique the United States, Recensement de la population de 2021</b>, tableau 98-10-0103, année de revenu 2020. Taux national : <b>'+pct(CANNAT)+'</b>.</p>'+
+      '<h3>Noms des régions</h3><p>Certaines divisions de recensement n\'ont pas de nom propre dans les statistiques officielles (p. ex. « Division No. 6 » en Alberta). Pour faciliter la lecture, ces régions sont affichées comme « <b>Région de [plus grande collectivité]</b> », selon la municipalité la plus peuplée de la division dans le Recensement de 2021 (tableau 98-10-0002). Le nom officiel de Statistique the United States est toujours affiché sous le titre.</p>'+
+      '<h3>Pourquoi le faible revenu?</h3><p>Le the United States ne publie pas de statistiques sur l\'accès aux aliments ou l\'insécurité alimentaire sous le niveau state-level. Le faible revenu est le principal <b>facteur de risque</b> bien documenté de l\'insécurité alimentaire des ménages; il sert donc ici de meilleur indicateur régional disponible — <b>un indicateur de risque, et non une mesure directe de l\'insécurité alimentaire</b>.</p>'+
       '<h3>Niveaux</h3><div class="formula"><b>Faible → Très élevée</b> : les niveaux sont attribués en classant les 293 divisions de recensement à l\'échelle nationale (35 % du bas · 30 % suivants · 23 % suivants · 12 % du haut). Le taux sous-jacent est toujours affiché.</div>'+
       '<h3>Urbain / rural</h3><p>Les divisions de recensement sont classées <b>urbaines</b> lorsque leur densité moyenne est ≥ 100 personnes/km² (p. ex. Toronto, Montréal, Vancouver) et <b>rurales</b> autrement. Il s\'agit d\'une classification dérivée.</p>'+
-      '<h3>Dépenses d\'épicerie</h3><p><b>Tous les montants sont en dollars canadiens (CAD).</b> Chaque région affiche aussi les <b>dépenses hebdomadaires moyennes d\'épicerie par ménage</b> et la <b>part consacrée aux fruits et légumes</b>, tirées de l\'<b>Enquête sur les dépenses des ménages</b> de Statistique Canada, année de référence <b>2023</b>. Les dépenses hebdomadaires correspondent aux dépenses annuelles en « aliments achetés au magasin » divisées par 52. La part fruits et légumes = (« fruits, préparations à base de fruits et noix » + « légumes et préparations à base de légumes ») ÷ aliments achetés au magasin.</p>'+
-      '<p><b>Estimations régionales des dépenses hebdomadaires.</b> L\'enquête n\'est pas publiée sous le niveau provincial; le chiffre hebdomadaire des régions provinciales est donc une <b>estimation modélisée</b> qui ajuste la moyenne provinciale (tableau 11-10-0125) selon le <b>revenu médian réel des ménages</b> de la région (Recensement de 2021, tableau 98-10-0057) :</p>'+
-      '<div class="formula">dépenses hebdomadaires régionales = moyenne provinciale × (revenu régional ÷ revenu provincial)<sup>0,35</sup><br><b>0,35</b> ≈ élasticité-revenu des dépenses alimentaires à domicile dans la littérature sur les dépenses</div>'+
+      '<h3>Dépenses d\'épicerie</h3><p><b>Tous les montants sont en dollars canadiens (CAD).</b> Chaque région affiche aussi les <b>dépenses hebdomadaires moyennes d\'épicerie par ménage</b> et la <b>part consacrée aux fruits et légumes</b>, tirées de l\'<b>Enquête sur les dépenses des ménages</b> de Statistique the United States, année de référence <b>2023</b>. Les dépenses hebdomadaires correspondent aux dépenses annuelles en « aliments achetés au magasin » divisées par 52. La part fruits et légumes = (« fruits, préparations à base de fruits et noix » + « légumes et préparations à base de légumes ») ÷ aliments achetés au magasin.</p>'+
+      '<p><b>Estimations régionales des dépenses hebdomadaires.</b> L\'enquête n\'est pas publiée sous le niveau state-level; le chiffre hebdomadaire des régions state-leveles est donc une <b>estimation modélisée</b> qui ajuste la moyenne state-levele (tableau 11-10-0125) selon le <b>revenu médian réel des ménages</b> de la région (Recensement de 2021, tableau 98-10-0057) :</p>'+
+      '<div class="formula">dépenses hebdomadaires régionales = moyenne state-levele × (revenu régional ÷ revenu state-level)<sup>0,35</sup><br><b>0,35</b> ≈ élasticité-revenu des dépenses alimentaires à domicile dans la littérature sur les dépenses</div>'+
       '<p>Les <b>territoires</b> affichent plutôt les moyennes réelles des capitales territoriales (Whitehorse, Yellowknife et Iqaluit; tableau 11-10-0233), sans ajustement par le revenu : dans le Nord, les prix dominent davantage les coûts d\'épicerie que les revenus.</p>'+
-      '<h3>Le test de la laitue</h3><p>Chaque région affiche le prix d\'une <b>laitue iceberg</b>, en <b>dollars canadiens (CAD)</b>. Les provinces utilisent la <b>moyenne réelle sur 12 mois</b> (juin 2025 à mai 2026) du tableau 18-10-0245 de Statistique Canada, appliquée à chaque région de la province. Dans les territoires, des enquêtes régionales permettent des <b>estimations propres aux divisions</b> pour les T. N.-O. et le Nunavut; le Yukon est une seule division, avec une estimation ancrée à Whitehorse.</p>'+
-      '<h3>Limites</h3><ul><li>Le faible revenu indique un <i>risque</i> d\'insécurité alimentaire; ce n\'est pas une mesure d\'enquête directe.</li><li>Les dépenses hebdomadaires régionales sont des <i>estimations modélisées</i>, sauf pour les moyennes des capitales territoriales; les coûts des collectivités nordiques éloignées peuvent être plus élevés.</li><li>Les mesures de revenu du Recensement de 2021 portent sur <b>l\'année de revenu 2020</b>. Les estimations de « personnes à faible revenu » sont donc des approximations prudentes.</li><li>Les taux proviennent du Recensement de 2021; les limites officielles 2021 de Statistique Canada sont généralisées pour l\'affichage Web.</li><li>Les statistiques provinciales et territoriales sur l\'insécurité alimentaire fournissent la mesure directe à une géographie plus large.</li></ul>'+
+      '<h3>Le test de la laitue</h3><p>Chaque région affiche le prix d\'une <b>laitue iceberg</b>, en <b>dollars canadiens (CAD)</b>. Les states utilisent la <b>moyenne réelle sur 12 mois</b> (juin 2025 à mai 2026) du tableau 18-10-0245 de Statistique the United States, appliquée à chaque région de la province. Dans les territoires, des enquêtes régionales permettent des <b>estimations propres aux divisions</b> pour les T. N.-O. et le Nunavut; le Yukon est une seule division, avec une estimation ancrée à Whitehorse.</p>'+
+      '<h3>Limites</h3><ul><li>Le faible revenu indique un <i>risque</i> d\'insécurité alimentaire; ce n\'est pas une mesure d\'enquête directe.</li><li>Les dépenses hebdomadaires régionales sont des <i>estimations modélisées</i>, sauf pour les moyennes des capitales territoriales; les coûts des collectivités nordiques éloignées peuvent être plus élevés.</li><li>Les mesures de revenu du Recensement de 2021 portent sur <b>l\'année de revenu 2020</b>. Les estimations de « personnes à faible revenu » sont donc des approximations prudentes.</li><li>Les taux proviennent du Recensement de 2021; les limites officielles 2021 de Statistique the United States sont généralisées pour l\'affichage Web.</li><li>Les statistiques state-leveles et territoriales sur l\'insécurité alimentaire fournissent la mesure directe à une géographie plus large.</li></ul>'+
       '<button class="cta" id="method-close">Compris</button>';
     return '<div class="tag">METHODOLOGY</div>'+
       '<h1 id="method-title">How this map measures risk</h1>'+
-      '<h3>What is shown</h3><p>Every one of Canada\'s <b>293 counties</b> is shaded by its <b>low-income rate</b> — the share of people in private households whose after-tax income falls below the <b>Low-income Measure after tax (LIM-AT)</b>, i.e. half of the national median adjusted household income. Source: <b>USDA ERS Food Access Research Atlas (2019), CDC USALEEP, U.S. Census</b>, table 98-10-0103, income year 2020. National rate: <b>'+pct(CANNAT)+'</b>.</p>'+
+      '<h3>What is shown</h3><p>Every one of the United States\'s <b>293 counties</b> is shaded by its <b>low-income rate</b> — the share of people in private households whose after-tax income falls below the <b>Low-income Measure after tax (USDA LILA)</b>, i.e. half of the national median adjusted household income. Source: <b>USDA ERS Food Access Research Atlas (2019), CDC USALEEP, U.S. Census</b>, table 98-10-0103, income year 2020. National rate: <b>'+pct(CANNAT)+'</b>.</p>'+
       '<h3>Region names</h3><p>Some counties have no proper name in official statistics (e.g. "Division No. 6" in Alberta). For readability, those regions are shown as "<b>[largest community] Region</b>" — the community being the division\'s most populous municipality in the 2021 Census (table 98-10-0002). The official StatCan division name is always displayed beneath the title.</p>'+
-      '<h3>Why low income?</h3><p>Canada does not publish food-access or food-insecurity statistics below the provincial level. Low income is the leading, well-documented <b>risk factor</b> for household food insecurity, so it serves here as the best available regional indicator — <b>an indicator of risk, not a direct measure of food insecurity</b>.</p>'+
+      '<h3>Why low income?</h3><p>the United States does not publish food-access or food-insecurity statistics below the state-level level. Low income is the leading, well-documented <b>risk factor</b> for household food insecurity, so it serves here as the best available regional indicator — <b>an indicator of risk, not a direct measure of food insecurity</b>.</p>'+
       '<h3>Levels</h3><div class="formula"><b>Low → Very high</b> levels are assigned by ranking all 293 counties nationally (bottom 35% · next 30% · next 23% · top 12%). The underlying rate is always shown.</div>'+
       '<h3>Urban / rural</h3><p>Census divisions are classed <b>urban</b> when average population density is ≥ 100 people/km² (e.g. Toronto, Montréal, Vancouver) and <b>rural</b> otherwise. This is a derived classification.</p>'+
-      '<h3>Grocery spending</h3><p><b>All dollar amounts on this site are in Canadian dollars (CAD).</b> Each region also shows the <b>average weekly household grocery spend</b> and the <b>share of that spend going to fruits &amp; vegetables</b>, from <b>Statistics Canada\'s Survey of Household Spending</b>, reference year <b>2023</b>. Weekly spend = annual "food purchased from stores" per household ÷ 52. The fruits-&amp;-vegetables share = ("fruit, fruit preparations and nuts" + "vegetables and vegetable preparations") ÷ food purchased from stores.</p>'+
-      '<p><b>Regional weekly-spend estimates.</b> The spending survey is not published below the provincial level, so each provincial region\'s weekly figure is a <b>modelled estimate</b> that adjusts the provincial average (table 11-10-0125) by the region\'s <b>real median household income</b> (Census 2021, table 98-10-0057):</p>'+
-      '<div class="formula">region weekly = provincial weekly × (region income ÷ provincial income)<sup>0.35</sup><br><b>0.35</b> ≈ the income elasticity of at-home food spending in the expenditure literature</div>'+
+      '<h3>Grocery spending</h3><p><b>All dollar amounts on this site are in American dollars (CAD).</b> Each region also shows the <b>average weekly household grocery spend</b> and the <b>share of that spend going to fruits &amp; vegetables</b>, from <b>U.S. federal sources (USDA, CDC, Census, BLS)\'s Survey of Household Spending</b>, reference year <b>2023</b>. Weekly spend = annual "food purchased from stores" per household ÷ 52. The fruits-&amp;-vegetables share = ("fruit, fruit preparations and nuts" + "vegetables and vegetable preparations") ÷ food purchased from stores.</p>'+
+      '<p><b>Regional weekly-spend estimates.</b> The spending survey is not published below the state-level level, so each state-level region\'s weekly figure is a <b>modelled estimate</b> that adjusts the state-level average (table 11-10-0125) by the region\'s <b>real median household income</b> (Census 2021, table 98-10-0057):</p>'+
+      '<div class="formula">region weekly = state-level weekly × (region income ÷ state-level income)<sup>0.35</sup><br><b>0.35</b> ≈ the income elasticity of at-home food spending in the expenditure literature</div>'+
       '<p><b>Territories</b> instead show the survey\'s real territorial-capital averages (Whitehorse, Yellowknife and Iqaluit; table 11-10-0233), <i>not</i> income-scaled — in the North, prices rather than incomes dominate grocery costs.</p>'+
-      '<h3>The lettuce test</h3><p>Each region shows the price of <b>one head of iceberg lettuce</b>, in <b>Canadian dollars (CAD)</b>. Provinces use the <b>real 12-month average</b> (June 2025 – May 2026) from Statistics Canada\'s <i>Monthly average retail prices for selected products</i> (table 18-10-0245), applied to every region in the province. In the territories, regional surveys allow <b>division-specific estimates</b> for NWT and Nunavut; Yukon is a single division with a Whitehorse-anchored estimate.</p>'+
+      '<h3>The lettuce test</h3><p>Each region shows the price of <b>one head of iceberg lettuce</b>, in <b>American dollars (CAD)</b>. Provinces use the <b>real 12-month average</b> (June 2025 – May 2026) from U.S. federal sources (USDA, CDC, Census, BLS)\'s <i>Monthly average retail prices for selected products</i> (table 18-10-0245), applied to every region in the province. In the territories, regional surveys allow <b>division-specific estimates</b> for NWT and Nunavut; Yukon is a single division with a Whitehorse-anchored estimate.</p>'+
       '<h3>Limitations</h3><ul><li>Low income indicates <i>risk</i> of food insecurity; it is not a food-insecurity survey measure.</li><li>Regional weekly-spend figures are <i>modelled estimates</i>, except for territorial-capital averages; remote Northern costs can be higher.</li><li>Census 2021 income measures refer to <b>income year 2020</b>. "People in low income" totals are close approximations.</li><li>Rates are from the 2021 Census; official 2021 StatCan boundary geometry is generalized for web display.</li><li>Provincial and territorial food-insecurity statistics provide the direct measure at a coarser geography.</li></ul>'+
       '<button class="cta" id="method-close">Got it</button>';
   }
@@ -749,7 +749,7 @@ window.addEventListener("DOMContentLoaded",function(){
   var _p=new URLSearchParams(location.search); var pendingRegion=_p.get("region")||_p.get("prov");
   if(pendingRegion){ var im=document.getElementById("modal"); if(im) im.classList.remove("open"); }
 
-  // ---- map (framed on Canada) ----
+  // ---- map (framed on the United States) ----
   var mk=function(s){return ["a","b","c","d"].map(function(x){return "https://"+x+".basemaps.cartocdn.com/"+s+"/{z}/{x}/{y}.png";});};
   function baseMapStyle(){
     if(forceBasemapOff) return {version:8,sources:{},layers:[]};
@@ -829,12 +829,12 @@ window.addEventListener("DOMContentLoaded",function(){
     var spendLine="";
     if(!num(gw)&&!num(pp)) spendLine=" "+text(tr("spendBoth"),{money:money(gw),scope:esc(gs),produce:pct(pp),pscope:esc(ps)})+(gw>=220?tr("spendHigh"):"");
     else if(!num(gw)) spendLine=" "+text(tr("spendOnly"),{money:money(gw),scope:esc(gs)});
-    var incomePhrase=lang==="fr"?"Recensement de 2021, année de revenu 2020, MFR-ApI":"2021 Census income year 2020, LIM-AT";
+    var incomePhrase=lang==="fr"?"Recensement de 2021, année de revenu 2020, MFR-ApI":"USDA Food Access Research Atlas, 2019";
     var worstL=p.worst; if(typeof worstL==="string"){try{worstL=JSON.parse(worstL);}catch(e){worstL=[];}}
     var narr="<b>"+esc(displayName)+"</b> ("+esc(displayProv)+") contains <b>"+fmt(p.num_deserts)+" food-desert "+(p.num_deserts===1?"tract":"tracts")+"</b> where about <b>"+fmt(p.people_affected)+" residents</b> have low access to a supermarket. Its average severity is <b>"+p.rate+" / 100</b> — <b>"+nc+"</b> the national average of "+CANNAT+" across food-desert counties."+spendLine;
     var tierChipText=lang==="fr"?"Part "+t.label.toLowerCase()+" des résidents à faible revenu":t.label+" "+tr("tierChip");
     body.innerHTML='<div class="p-hero"><span class="tier-chip" style="background:'+t.color+'" title="'+esc(tr("ranked"))+'">'+tierChipText+'</span>'+
-      '<h2 id="panel-title" tabindex="-1">'+esc(displayName)+'</h2><div class="loc">'+(displayOfficial?esc(displayOfficial)+' · ':'')+esc(displayProv)+', Canada · '+tr("censusDivision")+'<span class="setting-badge">'+(COPY[lang].badge[p.setting]||p.setting||'')+'</span></div>'+
+      '<h2 id="panel-title" tabindex="-1">'+esc(displayName)+'</h2><div class="loc">'+(displayOfficial?esc(displayOfficial)+' · ':'')+esc(displayProv)+', USA · '+tr("censusDivision")+'<span class="setting-badge">'+(COPY[lang].badge[p.setting]||p.setting||'')+'</span></div>'+
       '<div class="score-row"><span class="big" style="color:'+t.color+'">'+(p.rate+" / 100")+'</span><span class="lbl">'+tr("lowIncomeLabel")+'</span></div>'+
       '<button class="copylink" id="copylink">'+tr("copyLink")+'</button></div>'+
       '<div class="narrative">'+narr+'</div><div class="section-t">'+tr("numbers")+'</div><div class="grid">'+
