@@ -8,7 +8,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://foodgap.github.io/" />
 <meta property="og:title" content="The Food Gap — Food-Desert Severity Across the United States" />
-<meta property="og:description" content="All 2,083 U.S. counties containing food deserts: severity, poverty, income, grocery spending and store access — built on USDA, CDC, Census and BLS data." />
+<meta property="og:description" content="All 2,083 U.S. counties containing food deserts: severity, poverty, income and store access — built on USDA, CDC, Census and BLS data." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://foodgap.github.io/" />
 <meta property="og:image" content="https://foodgap.github.io/og-image.png" />
@@ -475,7 +475,7 @@
     <button class="cta" id="data-table-close">Close table</button>
   </div>
 </div>
-<script src="data.js" defer></script>
+<script src="data.js?v=3" defer></script>
 <script src="../maplibre-gl.js" defer></script>
 <script>
 window.addEventListener("DOMContentLoaded",function(){
@@ -531,7 +531,7 @@ window.addEventListener("DOMContentLoaded",function(){
       lettuceLabels:{cheap:"cheaper than most of the U.S.",expensive:"expensive",middle:"middle of the road"},
       compared:"Compared to the United States", whiteLine:"White line marks the U.S. national figure",
       cmpRate:"Severity index", cmpIncome:"Median household income", cmpSpend:"Weekly grocery spend", cmpProduce:"Share on fruits & vegetables", cmpLettuce:"Head of lettuce",
-      panelFoot:"<b>Severity, measured.</b> The index blends low-access population share (35%), poverty (25%), no-vehicle households (25%) and distance depth (15%) across USDA-designated food-desert tracts (2019), ranked 0–100 nationally. Store counts: USDA Food Environment Atlas, 2020. Weekly spend modelled from BLS Consumer Expenditure 2024 (US$6,224 food-at-home) adjusted by county income; fresh-produce share is the CE 2024 national average. All figures in US$.",
+      panelFoot:"<b>Severity, measured.</b> The index blends low-access population share (35%), poverty (25%), no-vehicle households (25%) and distance depth (15%) across USDA-designated food-desert tracts (2019), ranked 0–100 nationally. Store counts: USDA Food Environment Atlas, 2020. All figures in US$.",
       tableTag:"DATA TABLE", tableTitle:"Census division data", tableSearch:"Filter regions…",
       tableSearchAria:"Filter data table by county or state", tableRegion:"Region", tableProvince:"State",
       tableRate:"Low income", tablePeople:"People", tableSetting:"Setting", tableClose:"Close table",
@@ -831,7 +831,7 @@ window.addEventListener("DOMContentLoaded",function(){
     else if(!num(gw)) spendLine=" "+text(tr("spendOnly"),{money:money(gw),scope:esc(gs)});
     var incomePhrase=lang==="fr"?"Recensement de 2021, année de revenu 2020, MFR-ApI":"USDA Food Access Research Atlas, 2019";
     var worstL=p.worst; if(typeof worstL==="string"){try{worstL=JSON.parse(worstL);}catch(e){worstL=[];}}
-    var narr="<b>"+esc(displayName)+"</b> ("+esc(displayProv)+") contains <b>"+fmt(p.num_deserts)+" food-desert "+(p.num_deserts===1?"tract":"tracts")+"</b> where about <b>"+fmt(p.people_affected)+" residents</b> have low access to a supermarket. Its average severity is <b>"+p.rate+" / 100</b> — <b>"+nc+"</b> the national average of "+CANNAT+" across food-desert counties."+spendLine;
+    var narr="<b>"+esc(displayName)+"</b> ("+esc(displayProv)+") contains <b>"+fmt(p.num_deserts)+" food-desert "+(p.num_deserts===1?"tract":"tracts")+"</b> where about <b>"+fmt(p.people_affected)+" residents</b> have low access to a supermarket. Its average severity is <b>"+p.rate+" / 100</b> — <b>"+nc+"</b> the national average of "+CANNAT+" across food-desert counties.";
     var tierChipText=lang==="fr"?"Part "+t.label.toLowerCase()+" des résidents à faible revenu":t.label+" "+tr("tierChip");
     body.innerHTML='<div class="p-hero"><span class="tier-chip" style="background:'+t.color+'" title="'+esc(tr("ranked"))+'">'+tierChipText+'</span>'+
       '<h2 id="panel-title" tabindex="-1">'+esc(displayName)+'</h2><div class="loc">'+(displayOfficial?esc(displayOfficial)+' · ':'')+esc(displayProv)+', USA · '+tr("censusDivision")+'<span class="setting-badge">'+(COPY[lang].badge[p.setting]||p.setting||'')+'</span></div>'+
@@ -848,8 +848,6 @@ window.addEventListener("DOMContentLoaded",function(){
       '<div class="stat"><div class="v">'+(!num(p.life_expectancy)?p.life_expectancy:tr("noData"))+'</div><div class="k">Avg life expectancy (yrs)</div></div>'+
       '<div class="stat"><div class="v">'+(!num(p.snap_rate)?pct(p.snap_rate):tr("noData"))+'</div><div class="k">Households receiving SNAP</div></div>'+
       '<div class="stat"><div class="v">'+(!num(p.low_access_pop_share)?pct(p.low_access_pop_share):tr("noData"))+'</div><div class="k">Low-access population share</div></div>'+
-      '<div class="stat"><div class="v">'+(!num(gw)?money(gw):tr("noData"))+'</div><div class="k">'+(!num(gw)?text(tr("grocerySpend"),{scope:esc(gs)}):tr("groceryMissing"))+'</div></div>'+
-      '<div class="stat"><div class="v">'+(!num(pp)?pct(pp):tr("noData"))+'</div><div class="k">'+(!num(pp)?text(tr("produceShare"),{scope:esc(ps)}):tr("produceMissing"))+'</div></div>'+
       '</div>'+
       ((worstL&&worstL.length)?('<div class="section-t">Hardest-hit neighborhoods</div><div class="worst">'+worstL.map(function(w){var wt=tierInfo(w.t);return '<div class="worst-row"><span class="worst-dot" style="background:'+wt.color+'"></span><span class="worst-n">'+esc(w.n)+'</span><span class="worst-s">'+w.s+'</span></div>';}).join("")+'</div>'):'')+
       (!num(lp)?('<div class="section-t">'+tr("lettuceTest")+'</div><div class="narrative">'+text(tr("lettuceSentence"),{money:money2(lp),scope:esc(ls),color:lvColor,label:lvLabel,national:money2(CANLET),note:esc(ln)})+'</div>'):'')+
@@ -857,8 +855,6 @@ window.addEventListener("DOMContentLoaded",function(){
       '<div class="cmp">'+
         cmpRow(tr("cmpRate"),p.rate,CANNAT,0,100,"",false,"",p.rate+" / 100")+
         (!num(mi)?cmpRow(tr("cmpIncome"),Math.round(mi/1000),Math.round(CANMED/1000),40,185,"k",true,"US$",lang==="fr"?fmt(Math.round(mi/1000))+" k$ CA":"US$"+fmt(Math.round(mi/1000))+"k"):"")+
-        (!num(gw)?cmpRow(tr("cmpSpend"),gw,CSPEND.weekly,100,270,"",false,"US$",money(gw)):"")+
-        (!num(pp)?cmpRow(tr("cmpProduce"),pp,CSPEND.produce_pct,5,20,"%",true,"",pct(pp)):"")+
         (!num(p.life_expectancy)?cmpRow("Life expectancy",p.life_expectancy,USX.life||78.6,65,85,"",false,"",p.life_expectancy+" yrs"):"")+
         (!num(lp)?cmpRow(tr("cmpLettuce"),lp,CANLET,2,6.5,"",false,"US$",money2(lp)):"")+
       '</div>'+
